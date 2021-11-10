@@ -40,7 +40,7 @@ class timeCounter {
 
 const myTimer = new timeCounter({
   selector: "#timer-1",
-  targetDate: "Jul 17, 2019",
+  targetDate: "Dec 31, 2021",
 });
 
 function startTimer() {
