@@ -19,8 +19,20 @@ class timeCounter {
     const currentTime = new Date();
     this.createValue(currentTime);
   }
-  showTime() {
-    setInterval(() => this.countDown(), 1000);
+    showTime() {
+        if (this.targetDate > Date.now()) {
+            const timerId = setInterval(() => {
+                if (this.targetDate > Date.now()) {
+                    this.countDown()
+                } else {
+                    console.log('Увага! Введена дата вже настала.');
+                    clearInterval(timerId)
+                }
+            }, 1000);
+        } else {
+            console.log('Помилка! Введена невірна дата (дата вже минула).');
+        };
+    
   }
 
   createValue(currentTime) {
@@ -40,7 +52,7 @@ class timeCounter {
 
 const myTimer = new timeCounter({
   selector: "#timer-1",
-  targetDate: "Dec 31, 2021",
+  targetDate: "Nov 11, 2021",
 });
 
 function startTimer() {
